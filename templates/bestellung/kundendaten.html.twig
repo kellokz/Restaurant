@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="container">
+		{% set summe = 0 %}
+		<br>
+		<h2>Ihre Bestellung</h2>
+		<br>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>Bestell Nr.</td>
+
+					<td>Name</td>
+
+					<td>Preis</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for bestellung in bestellungen %}
+					{% set summe = summe + bestellung.preis %}
+					<tr>
+						<td>{{bestellung.bnummer}}</td>
+
+						<td>{{bestellung.name}}</td>
+
+						<td>{{bestellung.preis}}
+							Euro</td>
+
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+		<div class="my-3">
+			<h3>Gesamt Preis:
+				{{summe}}
+				Euro</h3>
+		</div>
+		{{form(kundendaten)}}
+		</div>
+	{% endblock %}
